@@ -1,6 +1,5 @@
 const baseConfig = {
-    serviceHost : '/pxhost',
-    port: '3000'
+    serviceHost : '/pxhost'
 }
 
 const config = {
