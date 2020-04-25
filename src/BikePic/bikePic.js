@@ -8,9 +8,11 @@ import './style.css';
 
 const GET_ALL_PICS = gql`
 {
-    bikePics{
-        url
+  bikePics{
+    Picture{
+      url
     }
+  }
 }
 `
 ;
