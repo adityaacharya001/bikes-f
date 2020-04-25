@@ -17,7 +17,7 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "start": "npm run build && node server",
+    "start": "node server",
     "develop": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
