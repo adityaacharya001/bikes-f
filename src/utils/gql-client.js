@@ -4,5 +4,5 @@ import config from '../config';
 const { serviceHost } = config;
 
 export default new ApolloCient({
-    uri: '${serviceHost}/graphql',
+    uri: `${serviceHost}/graphql`,
 });
