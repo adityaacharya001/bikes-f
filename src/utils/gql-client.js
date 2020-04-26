@@ -1,5 +1,8 @@
 import ApolloCient from 'apollo-boost';
+import config from '../config';
+
+const { serviceHost } = config;
 
 export default new ApolloCient({
-    uri: 'http://localhost:1337/graphql',
+    uri: '${serviceHost}/graphql',
 });
