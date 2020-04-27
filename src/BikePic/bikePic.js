@@ -18,21 +18,23 @@ const GET_ALL_PICS = gql`
 ;
 
 const {serviceHost} = config;
+console.log("ran");
 
 const BikePic = ()=>{
     const {data}= useQuery(GET_ALL_PICS);
-
+    console.log("data", data);
     if(data){
-        var {bikePics: [{Picture: {url:url}}]} = data
+        var {bikePics: [{Picture: {url:url}}]} = data;
+      console.log("bikes", `${serviceHost}${url}` );
         return(
-            <div>
+          <div className="bikePicBody" >
                 <img src={`${serviceHost}${url}`}></img>
             </div>
         )
     }
 
     return (
-        <div>
+      <div>
             Picture
         </div>
     )
