@@ -1,6 +1,6 @@
 import React from 'react';
-import {useQuery} from '@apollo/react-hooks';
-import {gql} from 'apollo-boost';
+import { useQuery } from '@apollo/react-hooks';
+import { gql } from 'apollo-boost';
 
 import config from '../config';
 
@@ -15,29 +15,31 @@ const GET_ALL_PICS = gql`
   }
 }
 `
-;
+  ;
 
-const {serviceHost} = config;
+const { serviceHost } = config;
 console.log("ran");
 
-const BikePic = ()=>{
-    const {data}= useQuery(GET_ALL_PICS);
-    console.log("data", data);
-    if(data){
-        var {bikePics: [{Picture: {url:url}}]} = data;
-      console.log("bikes", `${serviceHost}${url}` );
-        return(
-          <div className="bikePicBody" >
-                <img src={`${serviceHost}${url}`}></img>
-            </div>
-        )
-    }
-
-    return (
-      <div>
-            Picture
+const BikePic = () => {
+  const { data } = useQuery(GET_ALL_PICS);
+  console.log("data", data);
+  if (data) {
+    var { bikePics } = data;
+    return bikePics.map(el => {
+      console.log("el", el.Picture.url);
+      return (
+        <div className="bikePicBody">
+          <img src={`${serviceHost}${el.Picture.url}`}></img>
         </div>
-    )
+      )
+    })
+  }
+
+  return (
+    <div>
+      Picture
+    </div>
+  )
 }
 
 export default BikePic;
