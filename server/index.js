@@ -1,5 +1,5 @@
-const express = require ('express');
-const path = require ('path');
+const express = require('express');
+const path = require('path');
 const proxy = require("express-http-proxy");
 
 const port = '80';
@@ -15,10 +15,13 @@ app.all('/pxhost/*', proxy(serviceHost, {
 
 app.use(express.static(path.join(__dirname, buildPath)));
 
-app.all('/*', (req, res)=>{
+app.all('/user', (req, res) => {
+    console.log("url", req.url);
     res.sendFile(path.join(__dirname, buildPath, 'index.html'));
 });
 
+app.all('/*', proxy(serviceHost));
+
 require('http')
-.createServer(app)
-.listen(port, ()=> console.log(`running at http://${hostedAt}:${port}`));
+    .createServer(app)
+    .listen(port, () => console.log(`running at http://${hostedAt}:${port}`));
