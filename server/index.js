@@ -15,10 +15,12 @@ app.all('/pxhost/*', proxy(serviceHost, {
 
 app.use(express.static(path.join(__dirname, buildPath)));
 
-app.all('/user', (req, res) => {
-    console.log("url", req.url);
-    res.sendFile(path.join(__dirname, buildPath, 'index.html'));
-});
+// whitelisting of the routes for react frontend ***user example**
+
+// app.all('/user', (req, res) => {
+//     console.log("url", req.url);
+//     res.sendFile(path.join(__dirname, buildPath, 'index.html'));
+// });
 
 app.all('/*', proxy(serviceHost));
 
